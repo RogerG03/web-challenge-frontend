@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
 import { Poppins } from "next/font/google";
+import Sidebar from "@/components/sidebar/Sidebar";
 import "@/styles/globals.css";
 
 const poppins = Poppins({
@@ -29,21 +28,7 @@ export default function RootLayout({
       <body className={`${poppins.variable} antialiased`}>
         <div className="flex h-screen">
           {/* Menú lateral */}
-          <aside className="w-64 bg-[#F9FAF9] text-black p-4">
-            <Image
-              src="/lafise_logo.png"
-              alt="logo lafise"
-              width="193"
-              layout="responsive"
-              height="63"
-            ></Image>
-            <nav className="flex flex-col gap-2">
-              <Link href="/app-layout/dashboard">Dashboard</Link>
-              <Link href="/app-layout/transferencias">Transferencias</Link>
-              <Link href="/app-layout/historial">Historial</Link>
-            </nav>
-          </aside>
-
+          <Sidebar />
           {/* Contenido principal */}
           <main className="flex-1 p-6 bg-gray-100 overflow-auto">
             {children}
