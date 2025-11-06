@@ -1,14 +1,28 @@
 "use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { SidebarLinks } from "@/config/contracts/sidebar-contract";
 import { usePathname } from "next/navigation";
 import ExchangeRate from "./ExchangeRate";
 import { getCurrentDateTime } from "@/utils/currentDateTime";
+//import anime from "animejs";
+//import { useRef, useEffect } from "react";
 
 export default function Sidebar() {
   const pathname = usePathname();
+
+  /*const sidebarRef = useRef(null);
+
+ useEffect(() => {
+    if (sidebarRef.current) {
+      anime({
+        targets: sidebarRef.current,
+        translateX: isOpen ? 0 : -280,
+        easing: "easeInOutQuad",
+        duration: 300,
+      });
+    }
+  }, [isOpen]); */
 
   return (
     <aside className="flex flex-col gap-5 w-full max-w-[280px] bg-nav p-6 overflow-y-auto">
