@@ -1,9 +1,18 @@
+"use client";
 import Image from "next/image";
+import { useGlobal } from "@/context/GlobalContext";
 
 export default function HeaderBar() {
+  const { isSidebarOpen, setIsSidebarOpen } = useGlobal();
+
+  const toggleSidebar = (): void => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   return (
     <header className="w-full h-16 bg-white shadow-sm flex items-center justify-between px-6 border-b border-gray-200">
       <button
+        onClick={toggleSidebar}
         title="Boton barra lateral"
         className="text-gray-600 hover:text-gray-900 p-2 rounded-full hover:bg-gray-100 transition-colors"
       >
