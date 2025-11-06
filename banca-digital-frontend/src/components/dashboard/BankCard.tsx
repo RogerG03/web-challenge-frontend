@@ -1,7 +1,7 @@
 "use client";
 import { useGlobal } from "@/context/GlobalContext";
 import Image from "next/image";
-import { initialBankCardsData } from "@/config/data_test/bank-account-card-test";
+import { initialBankCardsData } from "@/config/data_test/bank-card-test";
 import { BankCard } from "@/config/interfaces/bank-card-interface";
 import { useEffect } from "react";
 
@@ -9,7 +9,7 @@ interface BankCardCustomClasses {
   [key: string]: string;
 }
 
-export default function BankAccountCards() {
+export default function BankCards() {
   const cardTypeClasses: BankCardCustomClasses = {
     debit: "bg-green-gradient",
     credit: "bg-blue-gradient",
@@ -27,7 +27,7 @@ export default function BankAccountCards() {
   }, [setBankCardsData, bankCardsData]);
 
   return (
-    <div className="flex flex-wrap gap-6 mb-8">
+    <div className="flex flex-wrap gap-6 mb-4">
       {bankCardsData.map((card: BankCard) => (
         <article
           key={card.id}

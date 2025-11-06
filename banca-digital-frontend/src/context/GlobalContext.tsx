@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useState, ReactNode } from "react";
 import { GlobalContextType } from "@/config/interfaces/global-context-interfaces";
+import { useCachedState } from "@/hook/useCachedState";
 
 const GlobalContext = createContext<GlobalContextType | undefined>(undefined);
 
@@ -11,6 +12,11 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
     GlobalContextType["bankCardsData"]
   >([]);
 
+  // Aquí agregaremos cuentas bancarias
+  const [accountsData, setAccountsData] = useCachedState<
+    GlobalContextType["accountsData"]
+  >("accountsData", []);
+
   return (
     <GlobalContext.Provider
       value={{
@@ -18,6 +24,8 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
         setIsSidebarOpen,
         bankCardsData,
         setBankCardsData,
+        accountsData,
+        setAccountsData,
       }}
     >
       {children}
