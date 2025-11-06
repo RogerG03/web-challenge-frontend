@@ -90,3 +90,8 @@ body {
   filter: brightness(0) saturate(100%) invert(45%) sepia(20%) saturate(977%)
     hue-rotate(104deg) brightness(95%) contrast(89%);
 }
+
+.bank-card-hover:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+}
