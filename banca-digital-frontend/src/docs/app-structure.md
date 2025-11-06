@@ -21,7 +21,8 @@ banca-digital/
 │
 ├─ utils/
 │
-└─ package.json
+└─ styles/
+
 ```
 
 ## Descripción de la Estructura de Carpetas Raíz
@@ -61,3 +62,7 @@ Encapsula la lógica de comunicación con APIs.
 ### `utils/`
 
 Espacio para funciones auxiliares.
+
+### `styles/`
+
+Carpeta para los definir estilos del proyecto, y de ser necesario agregar personalizados.
