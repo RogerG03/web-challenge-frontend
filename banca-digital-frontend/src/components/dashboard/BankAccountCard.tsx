@@ -31,12 +31,12 @@ export default function BankAccountCards() {
       {bankCardsData.map((card: BankCard) => (
         <article
           key={card.id}
-          className={`shadow-2xl bank-card-hover font["Quicksand"] w-88 h-52 bg-white rounded-xl overflow-hidden shadow p-4 flex relative ${
+          className={`shadow-2xl bank-card-hover font["Quicksand"] w-88 h-52 bg-white rounded-xl overflow-hidden p-4 flex relative ${
             cardTypeClasses[card.type]
           }`}
         >
           {" "}
-          <div className="gap-8 w-full flex flex-col z-10 text-white">
+          <section className="gap-8 w-full flex flex-col z-10 text-white">
             {/* Logo del banco */}
             <Image
               alt="icono logo lafise"
@@ -60,7 +60,8 @@ export default function BankAccountCards() {
                 <p>{card.expiryDate}</p>
               </div>
             </div>
-          </div>
+          </section>
+          {/*Imagen de fondo decorativa */}
           <Image
             alt="icono logo lafise"
             src="/dashboard_icons/lafise_bankcard_isotype.svg"
