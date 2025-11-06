@@ -3,7 +3,7 @@
 - **Rutas y URLs (solo dentro de app):** `kebab-case`  
   Ej: `/app-layout/transferencias`
 
-- **Carpetas:** `snake_case`  
+- **Carpetas y assets estáticos:** `snake_case`  
   Ej: `components/`, `service/`
 
 - **Componentes React:** `PascalCase`  
