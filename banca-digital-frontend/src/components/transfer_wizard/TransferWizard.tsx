@@ -20,8 +20,8 @@ const TransferWizard: React.FC<TransferWizardProps> = ({ currentStep }) => {
   ];
 
   return (
-    <section className="w-full flex justify-center my-[30px]">
-      <div className="flex items-center justify-between w-[80%] relative">
+    <section className="w-full flex justify-center bg-white-50 mb-[10px] my-[30px]">
+      <div className="flex items-center justify-between w-[100%] relative">
         {steps.map((step, index) => (
           <React.Fragment key={step.id}>
             {/* Paso */}

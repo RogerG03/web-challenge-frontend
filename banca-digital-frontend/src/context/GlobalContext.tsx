@@ -3,6 +3,10 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 import { GlobalContextType } from "@/config/interfaces/global-context-interfaces";
 import { useCachedState } from "@/hook/useCachedState";
+import {
+  InitialStateAddtionalInfo,
+  InitialStateNewTransactionPost,
+} from "@/config/contracts/initial-state-new-transaction";
 
 const GlobalContext = createContext<GlobalContextType | undefined>(undefined);
 
@@ -17,6 +21,15 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
     GlobalContextType["accountsData"]
   >("accountsData", []);
 
+  //Estado para la estructura de la peticion de una nueva transacción
+  const [newTransactionData, setNewTransactionData] = useCachedState<
+    GlobalContextType["newTransactionData"]
+  >("newTransactionData", InitialStateNewTransactionPost);
+
+  const [additionalInfo, setAdditionalInfo] = useCachedState<
+    GlobalContextType["additionalInfo"]
+  >("additionalInfo", InitialStateAddtionalInfo);
+
   return (
     <GlobalContext.Provider
       value={{
@@ -26,6 +39,10 @@ export const GlobalProvider = ({ children }: { children: ReactNode }) => {
         setBankCardsData,
         accountsData,
         setAccountsData,
+        newTransactionData,
+        setNewTransactionData,
+        additionalInfo,
+        setAdditionalInfo,
       }}
     >
       {children}
