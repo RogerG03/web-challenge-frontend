@@ -1,17 +1,16 @@
 "use client";
 import Image from "next/image";
 import ExchangeRate from "./ExchangeRate";
-import { getCurrentDateTime } from "@/utils/currentDateTime";
 import { useGlobal } from "@/context/GlobalContext";
 import { animate, createScope } from "animejs";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import NavigationLinks from "./NavigationLinks";
+import Config from "@/config/api-config.json";
 
 export default function Sidebar() {
   const sidebarRef = useRef<HTMLElement>(0 as unknown as HTMLElement);
   const scope = useRef<ReturnType<typeof createScope> | null>(null);
-  const { isSidebarOpen } = useGlobal();
-
+  const { isSidebarOpen, setIsSidebarOpen } = useGlobal();
   useEffect(() => {
     if (!sidebarRef.current) return;
 
@@ -31,6 +30,10 @@ export default function Sidebar() {
     return () => scope.current?.revert(); // limpiar animación al desmontar
   }, [isSidebarOpen]);
 
+  const [currentDate] = useState(() => new Date().toLocaleString());
+  const toggleSidebar = (): void => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
   return (
     <aside
       ref={sidebarRef}
@@ -47,10 +50,25 @@ export default function Sidebar() {
       <NavigationLinks></NavigationLinks>
       {/*Tasa de cambio */}
       <ExchangeRate></ExchangeRate>
-      <section className="text-sm text-gray-600">
-        <p>IP del servidor: {""}</p>
-        <p>Ultimo Acceso: {getCurrentDateTime()}</p>
+      <section className="text-sm mt-2 text-gray-600">
+        <p>
+          IP del servidor:{" "}
+          {Config.api.baseUrl.replace("http://", "").split("/")[0]}
+        </p>
+        <p>Ultimo Acceso: {currentDate}</p>
       </section>
+      <button
+        onClick={toggleSidebar}
+        title="Boton barra lateral"
+        className="btn-mobile-only text-gray-600 hover:text-gray-900 p-2 rounded-full hover:bg-gray-100 transition-colors"
+      >
+        <Image
+          src="/header_icons/hamburguesa_icon.svg"
+          width={24}
+          height={24}
+          alt="Boton menu barra lateral"
+        ></Image>
+      </button>
     </aside>
   );
 }

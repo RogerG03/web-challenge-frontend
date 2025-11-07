@@ -95,3 +95,23 @@ body {
   transform: scale(1.05);
   transition: transform 0.3s ease-in-out;
 }
+
+.btn-mobile-only {
+  display: none;
+}
+.mobile-only {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .btn-mobile-only {
+    display: block;
+    position: absolute !important;
+    top: 10px;
+    right: 10px;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+}

@@ -1,20 +1,27 @@
+"use client";
+
 import React from "react";
 import { TransactionResponse } from "@/config/interfaces/response-interface";
 import { getFormattedDate } from "@/utils/getFormattedDate";
+import { useGlobal } from "@/context/GlobalContext";
+import { InitialStateNewTransactionPost } from "@/config/contracts/initial-state-new-transaction";
 
 interface TransactionResultProps {
   setWizardStep: React.Dispatch<React.SetStateAction<number>>;
   response: TransactionResponse;
   setResponse: React.Dispatch<React.SetStateAction<TransactionResponse | null>>;
 }
-function TransactionResult({
+export default function TransactionResult({
   response,
   setWizardStep,
   setResponse,
 }: TransactionResultProps) {
+  const { setNewTransactionData } = useGlobal();
+
   const ResetValue = () => {
     setWizardStep(1);
     setResponse(null);
+    setNewTransactionData(InitialStateNewTransactionPost);
   };
   return (
     <div className="bg-white text-black rounded-xl shadow-md border border-gray-200 p-6 max-w-md mx-auto">
@@ -88,5 +95,3 @@ function TransactionResult({
     </div>
   );
 }
-
-export default TransactionResult;

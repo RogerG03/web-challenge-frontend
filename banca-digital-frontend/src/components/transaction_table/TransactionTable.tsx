@@ -17,7 +17,7 @@ export default function TransactionsTable({ data }: TransactionsTableProps) {
             <th className="py-2  w-[36px]">Fecha</th>{" "}
             <th className="py-2  pl-4">Descripción</th>
             <th className="py-2  ">Débito</th>
-            <th className="py-2  ">Balance</th>
+            <th className="py-2 desktop-only ">Balance</th>
           </tr>
         </thead>
 
@@ -37,7 +37,7 @@ export default function TransactionsTable({ data }: TransactionsTableProps) {
               <td className="py-3 whitespace-nowrap text-sm ">
                 {tx.amount?.currency} {tx.amount?.value}
               </td>
-              <td className="py-3 whitespace-nowrap text-sm font-semibold ">
+              <td className="py-3 desktop-only  whitespace-nowrap text-sm font-semibold ">
                 {tx.amount?.currency} {tx.balance}
               </td>
             </tr>
